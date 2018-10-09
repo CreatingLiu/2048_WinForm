@@ -98,16 +98,14 @@ namespace _2048_WinForm
                         if (PublicVar.num[i, j] == 0)
                             a = true;
                     }
-                }
+                }  //判断是否有空位
 
                 if (a)
-                {
-
-                }
+                    Program.RandomPoint(PublicVar.num);
 
                 if (Program.CanMove(PublicVar.num))
                 {
-Program.RandomPoint(PublicVar.num);
+
                 }
                 
             }
