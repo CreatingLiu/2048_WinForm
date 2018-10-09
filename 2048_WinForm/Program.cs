@@ -6,12 +6,15 @@ namespace _2048_WinForm
 {
     public static class PublicVar   //全局变量区域
     {
-        public static short[,] num;
-        public static short[,] lastNum;
+        public static short[,] num = new short[4, 4];
+        public static short[,] lastNum = new short[4, 4];
         public static int time = 0;
         public static int lastTime = 0;
         public static int score = 0;
         public static int lastScore = 0;
+
+        public static PictureBox[,] pictureBoxes = new PictureBox[4, 4];
+        public static MainForm mainForm;
     }
 
     static class Program
@@ -22,6 +25,38 @@ namespace _2048_WinForm
         [STAThread]
         static void Main()
         {
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            PublicVar.mainForm = new MainForm();
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    PublicVar.pictureBoxes[i, j] = new PictureBox
+                    {
+                        BorderStyle = BorderStyle.FixedSingle,
+                        AutoSize = false,
+                        Size = new System.Drawing.Size(80, 80),
+                        Location = new System.Drawing.Point(100 + i * 100, 100 + j * 100),
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                        Enabled = false
+                    };
+                    PublicVar.mainForm.Controls.Add(PublicVar.pictureBoxes[i, j]);
+                }
+            }  //初始化pictureBox
+
+            //pictureBoxes[0, 0].Image = Properties.Resources.num2;
+            Start();
+
+
+            Application.Run(PublicVar.mainForm);
+            Console.Read();
+        }
+
+        public static void Start()
+        {
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
@@ -31,42 +66,15 @@ namespace _2048_WinForm
                 }
             }  //初始化数组变量
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            MainForm mainForm = new MainForm();
+            PublicVar.time = 0;             //初始化计分计时
+            PublicVar.score = 0;
 
-            PictureBox[,] pictureBoxes = new PictureBox[4, 4];
-
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    pictureBoxes[i, j] = new PictureBox
-                    {
-                        BorderStyle = BorderStyle.FixedSingle,
-                        AutoSize = false,
-                        Size = new System.Drawing.Size(80, 80),
-                        Location = new System.Drawing.Point(100 + i * 100, 100 + j * 100),
-                        SizeMode = PictureBoxSizeMode.Zoom,
-                        Enabled = false
-                    };
-                    mainForm.Controls.Add(pictureBoxes[i, j]);
-                }
-            }  //初始化pictureBox
-
-            pictureBoxes[0, 0].Image = Properties.Resources.num2;
-
-            Application.Run(mainForm);
-
-        }
-
-        public static void Start()
-        {
             PublicVar.num = SetNewNum(PublicVar.num);  //放置开始的两个点
             PublicVar.num = SetNewNum(PublicVar.num);
+            //num = SetMyNum();            //去掉注释以调试程序
 
-            //num = SetMyNum();       //去掉注释以调试程序
-
+            PublicVar.lastNum = CopyToB(PublicVar.num);
+            PublicVar.mainForm.SetGameArea(PublicVar.num);
         }
 
         public class Point
@@ -131,7 +139,112 @@ namespace _2048_WinForm
             return b;
         }
 
-        
+        public static short[,] SquareRot90(short[,] a, int rotNum)
+        {
+            while (rotNum < 0)
+            {
+                rotNum += 4;
+            }
+            for (int rot_i = 0; rot_i < rotNum; rot_i++)
+            {
+                short[,] b = new short[4,4];
+                for (int i = 0; i < a.GetLength(0); i++)
+                {
+                    for (int j = 0; j < a.GetLength(1); j++)
+                    {
+                        b[j, a.GetLength(0) - i - 1] = a[i, j];
+                    }
+                }
+                a = b;
+            }
+            return a;
+        }
+
+        public static short[,] Merge(short[,] a)
+        {
+            for (short i = 0; i < a.GetLength(0); i++)
+            {
+                short last_j = 0;
+                for (short j = 0; j < a.GetLength(1); j++)//合并
+                {
+                    if (a[i, j] != 0)
+                    {
+                        if (a[i, j] == a[i, last_j] && j != last_j)
+                        {
+                            PublicVar.score = PublicVar.score + a[i, j] + a[i, last_j];
+                            a[i, j] = (short)(a[i, j] + a[i, last_j]);
+                            a[i, last_j] = 0;
+                        }
+                        else
+                        {
+                            last_j = j;
+                        }
+                    }
+                }
+                last_j = 0;
+                for (int j = 0; j < a.GetLength(1); j++)//整理
+                {
+                    if (a[i, j] != 0)
+                    {
+                        a[i, last_j] = a[i, j];
+                        if (last_j != j)
+                            a[i, j] = 0;
+                        last_j++;
+                    }
+                }
+            }
+            return a;
+        }
+
+        public static bool IsEquals(short[,] a, short[,] b)
+        {
+            bool res = true;
+            for (int i = 0; i < a.GetLength(0); i++)
+            {
+                for (int j = 0; j < a.GetLength(1); j++)
+                {
+                    if (b[i, j] != a[i, j])
+                    {
+                        res = false;
+                        break;
+                    }
+                }
+                if (!res)
+                    break;
+            }
+            return res;
+        }
+
+        public static bool CanMove(short[,] a)
+        {
+            int s = PublicVar.score;
+            bool res = false;
+            short[,] b = CopyToB(a);
+            b = Merge(b);
+            if (!IsEquals(a, b))
+                res = true;
+            b = CopyToB(a);
+            b = SquareRot90(b, 1);
+            b = Merge(b);
+            b = SquareRot90(b, -1);
+            if (!IsEquals(a, b))
+                res = true;
+            b = CopyToB(a);
+            b = SquareRot90(b, 2);
+            b = Merge(b);
+            b = SquareRot90(b, -2);
+            if (!IsEquals(a, b))
+                res = true;
+            b = CopyToB(a);
+            b = SquareRot90(b, 3);
+            b = Merge(b);
+            b = SquareRot90(b, -3);
+            if (!IsEquals(a, b))
+                res = true;
+            PublicVar.score = s;
+            return res;
+        }
+
     }
 
     class SaveFile
