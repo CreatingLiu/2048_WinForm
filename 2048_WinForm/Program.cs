@@ -39,7 +39,7 @@ namespace _2048_WinForm
                         BorderStyle = BorderStyle.FixedSingle,
                         AutoSize = false,
                         Size = new System.Drawing.Size(80, 80),
-                        Location = new System.Drawing.Point(100 + j * 100, 100 + i * 100),
+                        Location = new System.Drawing.Point(100 + j * 100, 160 + i * 100),
                         SizeMode = PictureBoxSizeMode.Zoom,
                         Enabled = false
                     };

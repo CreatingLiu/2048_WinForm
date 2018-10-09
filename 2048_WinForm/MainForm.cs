@@ -96,9 +96,11 @@ namespace _2048_WinForm
 
                 SetGameArea(PublicVar.num);
 
-                if (Program.CanMove(PublicVar.num))
+                if (!Program.CanMove(PublicVar.num))
                 {
-
+                    MessageBox.Show("请按确定键重新开始", "游戏结束！");
+                    Timer1.Enabled = false;
+                    Program.Start();
                 }
                 
             }

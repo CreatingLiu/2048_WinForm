@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
             this.scoreLabel = new System.Windows.Forms.Label();
             this.timeLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.backgroundListBox = new System.Windows.Forms.ListBox();
             this.focusSet = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Timer1
@@ -46,7 +48,7 @@
             // 
             this.scoreLabel.AutoSize = true;
             this.scoreLabel.Font = new System.Drawing.Font("迷你简汉真广标", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.scoreLabel.Location = new System.Drawing.Point(79, 47);
+            this.scoreLabel.Location = new System.Drawing.Point(65, 117);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(102, 21);
             this.scoreLabel.TabIndex = 2;
@@ -56,7 +58,7 @@
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("迷你简汉真广标", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.timeLabel.Location = new System.Drawing.Point(414, 47);
+            this.timeLabel.Location = new System.Drawing.Point(398, 117);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(102, 21);
             this.timeLabel.TabIndex = 3;
@@ -66,7 +68,7 @@
             // 
             this.label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label3.Enabled = false;
-            this.label3.Location = new System.Drawing.Point(100, 100);
+            this.label3.Location = new System.Drawing.Point(100, 160);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(400, 400);
             this.label3.TabIndex = 5;
@@ -80,15 +82,15 @@
             this.backgroundListBox.Items.AddRange(new object[] {
             "background1",
             "background2"});
-            this.backgroundListBox.Location = new System.Drawing.Point(470, 560);
+            this.backgroundListBox.Location = new System.Drawing.Point(511, 560);
             this.backgroundListBox.Name = "backgroundListBox";
-            this.backgroundListBox.Size = new System.Drawing.Size(107, 28);
+            this.backgroundListBox.Size = new System.Drawing.Size(77, 28);
             this.backgroundListBox.TabIndex = 6;
             this.backgroundListBox.SelectedIndexChanged += new System.EventHandler(this.BackgroundListBox_SelectedIndexChanged);
             // 
             // focusSet
             // 
-            this.focusSet.Location = new System.Drawing.Point(102, 55);
+            this.focusSet.Location = new System.Drawing.Point(88, 125);
             this.focusSet.Name = "focusSet";
             this.focusSet.Size = new System.Drawing.Size(10, 10);
             this.focusSet.TabIndex = 0;
@@ -96,14 +98,24 @@
             this.focusSet.UseVisualStyleBackColor = true;
             this.focusSet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyPress);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(509, 545);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "背景设置：";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackgroundImage = global::_2048_WinForm.Properties.Resources.background2;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(600, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.backgroundListBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.timeLabel);
@@ -125,6 +137,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox backgroundListBox;
         private System.Windows.Forms.Button focusSet;
+        private System.Windows.Forms.Label label1;
     }
 }
 
