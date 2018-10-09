@@ -39,7 +39,7 @@ namespace _2048_WinForm
                         BorderStyle = BorderStyle.FixedSingle,
                         AutoSize = false,
                         Size = new System.Drawing.Size(80, 80),
-                        Location = new System.Drawing.Point(100 + i * 100, 100 + j * 100),
+                        Location = new System.Drawing.Point(100 + j * 100, 100 + i * 100),
                         SizeMode = PictureBoxSizeMode.Zoom,
                         Enabled = false
                     };
@@ -71,11 +71,23 @@ namespace _2048_WinForm
 
             PublicVar.num = SetNewNum(PublicVar.num);  //放置开始的两个点
             PublicVar.num = SetNewNum(PublicVar.num);
-            //num = SetMyNum();            //去掉注释以调试程序
+            //PublicVar.num = SetMyNum();            //去掉注释以调试程序
 
             PublicVar.lastNum = CopyToB(PublicVar.num);
             PublicVar.mainForm.SetGameArea(PublicVar.num);
         }
+
+        private static short[,] SetMyNum()
+        {
+            short[,] a =
+            {
+                {0,2,2,0 },
+                {0,0,0,0 },
+                {0,0,0,0 },
+                {0,0,0,0 }
+            };
+            return a;
+        }  //调试用，手动设定初始值
 
         public class Point
         {
@@ -94,16 +106,15 @@ namespace _2048_WinForm
                 get;
                 set;
             }
-        }
+        }  //点类
 
         public static short[,] SetNewNum(short[,] a)
         {
-            Point rp;
-            rp = RandomPoint(a);
+            Point rp = RandomPoint(a);
             if (rp != null)
                 a[rp.X, rp.Y] = 2;
             return a;
-        }
+        }  //放置新点
 
         public static Point RandomPoint(short[,] a)  //查找返回随机空位置
         {
@@ -123,6 +134,7 @@ namespace _2048_WinForm
                 return null;
             }
             int rnd = new Random().Next(lstP.Count);
+            System.Threading.Thread.Sleep(30);
             return lstP[rnd];
         }
 
@@ -137,7 +149,7 @@ namespace _2048_WinForm
                 }
             }
             return b;
-        }
+        } //复制数组
 
         public static short[,] SquareRot90(short[,] a, int rotNum)
         {
@@ -158,14 +170,14 @@ namespace _2048_WinForm
                 a = b;
             }
             return a;
-        }
+        } //旋转
 
         public static short[,] Merge(short[,] a)
         {
-            for (short i = 0; i < a.GetLength(0); i++)
+            for (short i = 0; i < 4; i++)
             {
                 short last_j = 0;
-                for (short j = 0; j < a.GetLength(1); j++)//合并
+                for (short j = 0; j < 4; j++)//合并
                 {
                     if (a[i, j] != 0)
                     {
@@ -194,7 +206,7 @@ namespace _2048_WinForm
                 }
             }
             return a;
-        }
+        }  //向左合并
 
         public static bool IsEquals(short[,] a, short[,] b)
         {
@@ -213,7 +225,7 @@ namespace _2048_WinForm
                     break;
             }
             return res;
-        }
+        }  //判断两个数组是否相等
 
         public static bool CanMove(short[,] a)
         {
@@ -243,7 +255,7 @@ namespace _2048_WinForm
                 res = true;
             PublicVar.score = s;
             return res;
-        }
+        }  //判断是否还可以移动
 
     }
 

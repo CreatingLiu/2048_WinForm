@@ -73,6 +73,16 @@ namespace _2048_WinForm.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        public static System.Drawing.Bitmap background2 {
+            get {
+                object obj = ResourceManager.GetObject("background2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         public static System.Drawing.Bitmap num0 {
             get {
                 object obj = ResourceManager.GetObject("num0", resourceCulture);
