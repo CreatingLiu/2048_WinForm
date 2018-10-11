@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static _2048_WinForm.PublicVar;
 
 namespace _2048_WinForm
 {
@@ -19,8 +20,8 @@ namespace _2048_WinForm
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            PublicVar.time++;
-            timeLabel.Text = "时间：" + PublicVar.time.ToString() + "s";
+            time++;
+            timeLabel.Text = "时间：" + time.ToString() + "s";
         }
 
         private void MainForm_KeyPress(object sender, KeyEventArgs e)
@@ -34,37 +35,33 @@ namespace _2048_WinForm
             {
                 case Keys.Up:    //上
                 case Keys.W:
-                    PublicVar.lastNum = Program.CopyToB(PublicVar.num);
-                    PublicVar.lastTime = PublicVar.time;
-                    PublicVar.lastScore = PublicVar.score;
-                    PublicVar.num = Program.SquareRot90(PublicVar.num, 3);
-                    PublicVar.num = Program.Merge(PublicVar.num);
-                    PublicVar.num = Program.SquareRot90(PublicVar.num, 1);
+                    lastNum = Program.CopyToB(num);
+                    lastScore = score;
+                    num = Program.SquareRot90(num, 3);
+                    num = Program.Merge(num);
+                    num = Program.SquareRot90(num, 1);
                     break;
                 case Keys.Down: //下
                 case Keys.S:
-                    PublicVar.lastNum = Program.CopyToB(PublicVar.num);
-                    PublicVar.lastTime = PublicVar.time;
-                    PublicVar.lastScore = PublicVar.score;
-                    PublicVar.num = Program.SquareRot90(PublicVar.num, 1);
-                    PublicVar.num = Program.Merge(PublicVar.num);
-                    PublicVar.num = Program.SquareRot90(PublicVar.num, 3);
+                    lastNum = Program.CopyToB(num);
+                    lastScore = score;
+                    num = Program.SquareRot90(num, 1);
+                    num = Program.Merge(num);
+                    num = Program.SquareRot90(num, 3);
                     break;
                 case Keys.Left: //左
                 case Keys.A:
-                    PublicVar.lastNum = Program.CopyToB(PublicVar.num);
-                    PublicVar.lastTime = PublicVar.time;
-                    PublicVar.lastScore = PublicVar.score;
-                    PublicVar.num = Program.Merge(PublicVar.num);
+                    lastNum = Program.CopyToB(num);
+                    lastScore = score;
+                    num = Program.Merge(num);
                     break;
                 case Keys.Right: //右
                 case Keys.D:
-                    PublicVar.lastNum = Program.CopyToB(PublicVar.num);
-                    PublicVar.lastTime = PublicVar.time;
-                    PublicVar.lastScore = PublicVar.score;
-                    PublicVar.num = Program.SquareRot90(PublicVar.num, 2);
-                    PublicVar.num = Program.Merge(PublicVar.num);
-                    PublicVar.num = Program.SquareRot90(PublicVar.num, 2);
+                    lastNum = Program.CopyToB(num);
+                    lastScore = score;
+                    num = Program.SquareRot90(num, 2);
+                    num = Program.Merge(num);
+                    num = Program.SquareRot90(num, 2);
                     break;
                 case Keys.H:    //帮助
 
@@ -88,18 +85,18 @@ namespace _2048_WinForm
 
             if (e.KeyCode==Keys.Up||e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.W || e.KeyCode == Keys.S || e.KeyCode == Keys.A || e.KeyCode == Keys.D)
             {
-                Program.Point point = Program.RandomPoint(PublicVar.num);
-                if (!Program.IsEquals(PublicVar.num,PublicVar.lastNum))
+                Program.Point point = Program.RandomPoint(num);
+                if (!Program.IsEquals(num, lastNum))
                 {
-                    PublicVar.num = Program.SetNewNum(PublicVar.num);
+                    num = Program.SetNewNum(num);
                 }
 
-                SetGameArea(PublicVar.num);
+                SetGameArea(num);
 
-                if (!Program.CanMove(PublicVar.num))
+                if (!Program.CanMove(num))
                 {
-                    MessageBox.Show("请按确定键重新开始", "游戏结束！");
                     Timer1.Enabled = false;
+                    MessageBox.Show("请按确定键重新开始", "游戏结束！");
                     Program.Start();
                 }
                 
@@ -115,40 +112,40 @@ namespace _2048_WinForm
                     switch (num[i, j])
                     {
                         case 0:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num0;
+                            pictureBoxes[i, j].Image = null;
                             break;
                         case 2:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num2;
+                            pictureBoxes[i, j].Image = Properties.Resources.num2;
                             break;
                         case 4:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num4;
+                            pictureBoxes[i, j].Image = Properties.Resources.num4;
                             break;
                         case 8:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num8;
+                            pictureBoxes[i, j].Image = Properties.Resources.num8;
                             break;
                         case 16:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num16;
+                            pictureBoxes[i, j].Image = Properties.Resources.num16;
                             break;
                         case 32:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num32;
+                            pictureBoxes[i, j].Image = Properties.Resources.num32;
                             break;
                         case 64:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num64;
+                            pictureBoxes[i, j].Image = Properties.Resources.num64;
                             break;
                         case 128:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num128;
+                            pictureBoxes[i, j].Image = Properties.Resources.num128;
                             break;
                         case 256:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num256;
+                            pictureBoxes[i, j].Image = Properties.Resources.num256;
                             break;
                         case 512:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num512;
+                            pictureBoxes[i, j].Image = Properties.Resources.num512;
                             break;
                         case 1024:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num1024;
+                            pictureBoxes[i, j].Image = Properties.Resources.num1024;
                             break;
                         case 2048:
-                            PublicVar.pictureBoxes[i, j].Image = Properties.Resources.num2048;
+                            pictureBoxes[i, j].Image = Properties.Resources.num2048;
                             break;
                         default:
                             break;
@@ -160,25 +157,24 @@ namespace _2048_WinForm
 
         private void SetDateArea()
         {
-            timeLabel.Text = "时间：" + PublicVar.time.ToString() + "s";
-            scoreLabel.Text = "得分："+PublicVar.score.ToString();
+            timeLabel.Text = "时间：" + time.ToString() + "s";
+            scoreLabel.Text = "得分："+ score.ToString();
         }
 
-        private void BackgroundListBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
-            switch (backgroundListBox.SelectedIndex)
-            {
-                case 0:
-                    BackgroundImage = Properties.Resources.background;
-                    break;
-                case 1:
-                    BackgroundImage = Properties.Resources.background2;
-                    break;
-                default:
-                    break;
-            }
+            Application.Exit();
+        }
 
-            focusSet.Focus();
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            scoreLabel.Location = new Point(primaryScreenHeight*115/600+(primaryScreenWidth-primaryScreenHeight)/2,primaryScreenHeight*66/600);
+            timeLabel.Location = new Point(primaryScreenHeight * 370 / 600 + (primaryScreenWidth - primaryScreenHeight) / 2, primaryScreenHeight * 66 / 600);
+        }
+
+        private void scoreLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

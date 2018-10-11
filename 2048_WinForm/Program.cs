@@ -1,20 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
+using static _2048_WinForm.PublicVar;
 
 namespace _2048_WinForm
 {
-    public static class PublicVar   //全局变量区域
+    /// <summary>
+    /// 保存全局变量
+    /// </summary>
+    public static class PublicVar
     {
+        /// <summary>
+        /// 存储游戏数据的数组
+        /// </summary>
         public static short[,] num = new short[4, 4];
+
+        /// <summary>
+        /// 上一回合数据的数组
+        /// </summary>
         public static short[,] lastNum = new short[4, 4];
+
+        /// <summary>
+        /// 已经经过的时间
+        /// </summary>
         public static int time = 0;
-        public static int lastTime = 0;
+
+        /// <summary>
+        /// 得分
+        /// </summary>
         public static int score = 0;
+
+        /// <summary>
+        /// 上个回合的分数
+        /// </summary>
         public static int lastScore = 0;
 
+        /// <summary>
+        /// 游戏区域显示数字的容器
+        /// </summary>
         public static PictureBox[,] pictureBoxes = new PictureBox[4, 4];
+
+        /// <summary>
+        /// 主窗体
+        /// </summary>
         public static MainForm mainForm;
+
+        public static int primaryScreenWidth = Screen.PrimaryScreen.Bounds.Width;   //获取屏幕分辨率
+        public static int primaryScreenHeight = Screen.PrimaryScreen.Bounds.Height;
     }
 
     static class Program
@@ -25,58 +58,70 @@ namespace _2048_WinForm
         [STAThread]
         static void Main()
         {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            PublicVar.mainForm = new MainForm();
+            mainForm = new MainForm();
+
+
+            Trace.WriteLine("屏幕分辨率："+primaryScreenWidth+"*"+primaryScreenHeight);
+
+            int pictureBoxSize = 2 * primaryScreenHeight / 15;
+            int pictureBoxesLocationWidth = (primaryScreenWidth - primaryScreenHeight) / 2 + primaryScreenHeight / 6;
+            int pictureBoxesLocationHeight = primaryScreenHeight / 4;
 
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    PublicVar.pictureBoxes[i, j] = new PictureBox
+                    pictureBoxes[i, j] = new PictureBox
                     {
                         BorderStyle = BorderStyle.FixedSingle,
                         AutoSize = false,
-                        Size = new System.Drawing.Size(80, 80),
-                        Location = new System.Drawing.Point(100 + j * 100, 160 + i * 100),
+                        Size = new System.Drawing.Size(pictureBoxSize, pictureBoxSize),
+                        Location = new System.Drawing.Point(pictureBoxesLocationWidth + j * (pictureBoxSize + primaryScreenHeight / 30), pictureBoxesLocationHeight + i * (pictureBoxSize + primaryScreenHeight / 30)),
                         SizeMode = PictureBoxSizeMode.Zoom,
-                        Enabled = false
+                        Enabled = false,
+                        BackColor = System.Drawing.Color.Transparent
                     };
-                    PublicVar.mainForm.Controls.Add(PublicVar.pictureBoxes[i, j]);
+                    mainForm.Controls.Add(pictureBoxes[i, j]);
                 }
             }  //初始化pictureBox
 
-            //pictureBoxes[0, 0].Image = Properties.Resources.num2;
             Start();
 
-
-            Application.Run(PublicVar.mainForm);
+            Application.Run(mainForm);
             Console.Read();
         }
 
+        /// <summary>
+        /// 游戏初始化
+        /// </summary>
         public static void Start()
         {
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    PublicVar.num[i, j] = 0;
-                    PublicVar.lastNum[i, j] = 0;
+                    num[i, j] = 0;
+                    lastNum[i, j] = 0;
                 }
             }  //初始化数组变量
 
-            PublicVar.time = 0;             //初始化计分计时
-            PublicVar.score = 0;
+            time = 0;             //初始化计分计时
+            score = 0;
 
-            PublicVar.num = SetNewNum(PublicVar.num);  //放置开始的两个点
-            PublicVar.num = SetNewNum(PublicVar.num);
-            //PublicVar.num = SetMyNum();            //去掉注释以调试程序
+            num = SetNewNum(num);  //放置开始的两个点
+            num = SetNewNum(num);
+            //num = SetMyNum();            //去掉注释以调试程序
 
-            PublicVar.lastNum = CopyToB(PublicVar.num);
-            PublicVar.mainForm.SetGameArea(PublicVar.num);
+            lastNum = CopyToB(num);
+            mainForm.SetGameArea(num);
         }
 
+        /// <summary>
+        /// 用于调试时手动设置初始值
+        /// </summary>
+        /// <returns>手动设置的数组</returns>
         private static short[,] SetMyNum()
         {
             short[,] a =
@@ -87,8 +132,11 @@ namespace _2048_WinForm
                 {0,0,0,0 }
             };
             return a;
-        }  //调试用，手动设定初始值
+        }  
 
+        /// <summary>
+        /// 表示一个二维数组中的位置
+        /// </summary>
         public class Point
         {
             public Point(int x, int y)
@@ -106,17 +154,27 @@ namespace _2048_WinForm
                 get;
                 set;
             }
-        }  //点类
+        } 
 
+        /// <summary>
+        /// 放置随机数字
+        /// </summary>
+        /// <param name="a">要放置数字的数组</param>
+        /// <returns>放置好数字的数组</returns>
         public static short[,] SetNewNum(short[,] a)
         {
             Point rp = RandomPoint(a);
             if (rp != null)
                 a[rp.X, rp.Y] = 2;
             return a;
-        }  //放置新点
+        }
 
-        public static Point RandomPoint(short[,] a)  //查找返回随机空位置
+        /// <summary>
+        /// 查找返回随机空位置
+        /// </summary>
+        /// <param name="a">要查找的数组</param>
+        /// <returns>找到的随机空位置</returns>
+        public static Point RandomPoint(short[,] a)
         {
             List<Point> lstP = new List<Point>();
             for (int i = 0; i < a.GetLength(0); i++)
@@ -138,6 +196,11 @@ namespace _2048_WinForm
             return lstP[rnd];
         }
 
+        /// <summary>
+        /// 复制一个数组
+        /// </summary>
+        /// <param name="a">要复制的数组</param>
+        /// <returns>复制出的数组</returns>
         public static short[,] CopyToB(short[,] a)
         {
             short[,] b = new short[4, 4];
@@ -149,8 +212,14 @@ namespace _2048_WinForm
                 }
             }
             return b;
-        } //复制数组
+        } 
 
+        /// <summary>
+        /// 旋转一个二维数组
+        /// </summary>
+        /// <param name="a">要旋转的数组</param>
+        /// <param name="rotNum">顺时针旋转圈数</param>
+        /// <returns>旋转后的数组</returns>
         public static short[,] SquareRot90(short[,] a, int rotNum)
         {
             while (rotNum < 0)
@@ -170,8 +239,13 @@ namespace _2048_WinForm
                 a = b;
             }
             return a;
-        } //旋转
+        } 
 
+        /// <summary>
+        /// 游戏逻辑向左合并
+        /// </summary>
+        /// <param name="a">要操作的数组</param>
+        /// <returns>操作后的数组</returns>
         public static short[,] Merge(short[,] a)
         {
             for (short i = 0; i < 4; i++)
@@ -183,7 +257,7 @@ namespace _2048_WinForm
                     {
                         if (a[i, j] == a[i, last_j] && j != last_j)
                         {
-                            PublicVar.score = PublicVar.score + a[i, j] + a[i, last_j];
+                            score += a[i, j] + a[i, last_j];
                             a[i, j] = (short)(a[i, j] + a[i, last_j]);
                             a[i, last_j] = 0;
                         }
@@ -206,8 +280,14 @@ namespace _2048_WinForm
                 }
             }
             return a;
-        }  //向左合并
+        }  
 
+        /// <summary>
+        /// 判断两个数组是否相等
+        /// </summary>
+        /// <param name="a">第一个数组</param>
+        /// <param name="b">第二个数组</param>
+        /// <returns>是否相等</returns>
         public static bool IsEquals(short[,] a, short[,] b)
         {
             bool res = true;
@@ -225,11 +305,16 @@ namespace _2048_WinForm
                     break;
             }
             return res;
-        }  //判断两个数组是否相等
+        }  
 
+        /// <summary>
+        /// 游戏逻辑判断是否可以移动
+        /// </summary>
+        /// <param name="a">要判断的数组</param>
+        /// <returns>是否可以移动</returns>
         public static bool CanMove(short[,] a)
         {
-            int s = PublicVar.score;
+            int s = score;
             bool res = false;
             short[,] b = CopyToB(a);
             b = Merge(b);
@@ -253,9 +338,9 @@ namespace _2048_WinForm
             b = SquareRot90(b, -3);
             if (!IsEquals(a, b))
                 res = true;
-            PublicVar.score = s;
+            score = s;
             return res;
-        }  //判断是否还可以移动
+        } 
 
     }
 
