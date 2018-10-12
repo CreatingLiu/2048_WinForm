@@ -51,21 +51,32 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingForm.Designer.cs">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <EmbeddedResource Include="SettingForm.resx">
+      <DependentUpon>SettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -75,58 +86,58 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\2.png" />
+    <None Include="Resources\pic\num\2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num2.png" />
+    <None Include="Resources\pic\num\num2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num4.png" />
+    <None Include="Resources\pic\num\num4.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num8.png" />
+    <None Include="Resources\pic\num\num8.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num16.png" />
+    <None Include="Resources\pic\num\num16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num32.png" />
+    <None Include="Resources\pic\num\num32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num64.png" />
+    <None Include="Resources\pic\num\num64.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num128.png" />
+    <None Include="Resources\pic\num\num128.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num256.png" />
+    <None Include="Resources\pic\num\num256.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num512.png" />
+    <None Include="Resources\pic\num\num512.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num1024.png" />
+    <None Include="Resources\pic\num\num1024.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num2048.png" />
+    <None Include="Resources\pic\num\num2048.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num4096.png" />
+    <None Include="Resources\pic\num\num4096.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\num\num0.png" />
+    <None Include="Resources\pic\num\num0.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\background.png" />
+    <None Include="Resources\pic\background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="pic\background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="pic\background2.jpg" />
+    <None Include="Resources\pic\background2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\music\Sing, R. Sing! - 幼女幻奏.wav" />
+    <None Include="Resources\music\River Flows In You.wav" />
+    <None Include="Resources\pic\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

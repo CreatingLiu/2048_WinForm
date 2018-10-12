@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using static _2048_WinForm.PublicVar;
+using System.Media;
 
 namespace _2048_WinForm
 {
@@ -46,6 +47,11 @@ namespace _2048_WinForm
         /// </summary>
         public static MainForm mainForm;
 
+        /// <summary>
+        /// 背景音乐对象
+        /// </summary>
+        public static SoundPlayer backgroundMusicPlayer = new SoundPlayer();
+
         public static int primaryScreenWidth = Screen.PrimaryScreen.Bounds.Width;   //获取屏幕分辨率
         public static int primaryScreenHeight = Screen.PrimaryScreen.Bounds.Height;
     }
@@ -86,6 +92,17 @@ namespace _2048_WinForm
                     mainForm.Controls.Add(pictureBoxes[i, j]);
                 }
             }  //初始化pictureBox
+
+            
+
+            switch (Properties.Settings.Default.bacgroundImageIndex)
+            {
+                case 0:
+                    
+                    break;
+                case 1:
+                    break;
+            }
 
             Start();
 

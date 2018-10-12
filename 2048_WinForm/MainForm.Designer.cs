@@ -55,7 +55,6 @@
             this.scoreLabel.TabIndex = 2;
             this.scoreLabel.Text = "得分显示";
             this.scoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.scoreLabel.Click += new System.EventHandler(this.scoreLabel_Click);
             // 
             // timeLabel
             // 
@@ -100,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackgroundImage = global::_2048_WinForm.Properties.Resources.background;
+            this.BackgroundImage = global::_2048_WinForm.Properties.Resources.backgroundImage1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(600, 600);
             this.ControlBox = false;

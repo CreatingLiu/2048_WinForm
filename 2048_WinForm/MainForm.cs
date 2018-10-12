@@ -171,10 +171,5 @@ namespace _2048_WinForm
             scoreLabel.Location = new Point(primaryScreenHeight*115/600+(primaryScreenWidth-primaryScreenHeight)/2,primaryScreenHeight*66/600);
             timeLabel.Location = new Point(primaryScreenHeight * 370 / 600 + (primaryScreenWidth - primaryScreenHeight) / 2, primaryScreenHeight * 66 / 600);
         }
-
-        private void scoreLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
