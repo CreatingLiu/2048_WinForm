@@ -89,12 +89,12 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(12, 531);
+            this.label1.Location = new System.Drawing.Point(12, 551);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(461, 60);
+            this.label1.Size = new System.Drawing.Size(461, 36);
             this.label1.TabIndex = 5;
-            this.label1.Text = "2048小游戏alpha0.0.1  by-刘兴国      上下左右方向键和WASD操作游戏，R重新开始\r\n\r\n感谢曹子悦同学提供的背景图\r\n\r\n目前功能还不是" +
-    "很完善，但是仍然有可能像我一样上瘾，请大家谨慎食用";
+            this.label1.Text = "2048小游戏alpha0.0.2  by-刘兴国      上下左右方向键和WASD操作游戏，R重新开始\r\n\r\n目前功能还不是很完善，但是仍然有可能像我一样上瘾" +
+    "，请大家谨慎食用";
             // 
             // SettingButton
             // 

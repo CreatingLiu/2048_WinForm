@@ -45,17 +45,26 @@ namespace _2048_WinForm.Properties {
 
         private void Setting ()
         {
+            backgroundMusicPlayer = new SoundPlayer();
             Trace.WriteLine("音乐选择"+Default.backgroundImageIndex);
+            if (backgroundMusicIndex == 0)
+                backgroundMusicPlayer.Stop();
+
             switch (Default.backgroundMusicIndex)
             {
                 case 0:
-                    backgroundMusicPlayer = new SoundPlayer(Resources.backgroundMusic1);
+                    backgroundMusicPlayer = null;
                     break;
                 case 1:
+                    backgroundMusicPlayer = new SoundPlayer(Resources.backgroundMusic1);
+                    break;
+                case 2:
                     backgroundMusicPlayer = new SoundPlayer(Resources.backgroundMusic2);
                     break;
             }
-            backgroundMusicPlayer.PlayLooping();
+
+            if (backgroundMusicIndex != 0)
+                backgroundMusicPlayer.Play();
         }
     }
 }

@@ -89,7 +89,7 @@ namespace _2048_WinForm
                         Location = new System.Drawing.Point(pictureBoxesLocationWidth + j * (pictureBoxSize + primaryScreenHeight / 30), pictureBoxesLocationHeight + i * (pictureBoxSize + primaryScreenHeight / 30)),
                         SizeMode = PictureBoxSizeMode.Zoom,
                         Enabled = false,
-                        BackColor = System.Drawing.Color.Transparent
+                        //BackColor = System.Drawing.Color.Transparent
                     };
                     mainForm.Controls.Add(pictureBoxes[i, j]);
                 }

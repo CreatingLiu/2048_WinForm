@@ -67,7 +67,12 @@ namespace _2048_WinForm
 
                     break;
                 case Keys.Z:   //撤销
-
+                    if (Properties.Settings.Default.isRevoke)
+                    {
+                        num = Program.CopyToB(lastNum);
+                        score = lastScore;
+                        SetGameArea(num);
+                    }           
                     break;
                 case Keys.X:   //保存
 

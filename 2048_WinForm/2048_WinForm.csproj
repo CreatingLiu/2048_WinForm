@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\backgroundImage2.jpg" />
     <None Include="Resources\backgroundMusic2.wav" />
     <None Include="Resources\backgroundMusic1.wav" />
     <None Include="Resources\music\Sing, R. Sing! - 幼女幻奏.wav" />

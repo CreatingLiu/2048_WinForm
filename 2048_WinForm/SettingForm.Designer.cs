@@ -42,7 +42,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 131);
+            this.label1.Location = new System.Drawing.Point(45, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
@@ -51,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 208);
+            this.label2.Location = new System.Drawing.Point(45, 195);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 1;
@@ -60,7 +60,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 53);
+            this.label3.Location = new System.Drawing.Point(45, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 2;
@@ -71,11 +71,12 @@
             this.BackgroundMusicListBox.FormattingEnabled = true;
             this.BackgroundMusicListBox.ItemHeight = 12;
             this.BackgroundMusicListBox.Items.AddRange(new object[] {
+            "（无）",
             "River Flows In You                  ——刘倩倩",
             "Sing, R. Sing! - 幼女幻奏          ——刘倩倩"});
-            this.BackgroundMusicListBox.Location = new System.Drawing.Point(94, 53);
+            this.BackgroundMusicListBox.Location = new System.Drawing.Point(92, 40);
             this.BackgroundMusicListBox.Name = "BackgroundMusicListBox";
-            this.BackgroundMusicListBox.Size = new System.Drawing.Size(314, 40);
+            this.BackgroundMusicListBox.Size = new System.Drawing.Size(314, 52);
             this.BackgroundMusicListBox.TabIndex = 3;
             // 
             // BackgroundImageListBox
@@ -85,36 +86,38 @@
             this.BackgroundImageListBox.Items.AddRange(new object[] {
             "backgroundImage1    ——曹子悦",
             "backgroundImage2    ——曹子悦"});
-            this.BackgroundImageListBox.Location = new System.Drawing.Point(94, 131);
+            this.BackgroundImageListBox.Location = new System.Drawing.Point(92, 118);
             this.BackgroundImageListBox.Name = "BackgroundImageListBox";
-            this.BackgroundImageListBox.Size = new System.Drawing.Size(314, 40);
+            this.BackgroundImageListBox.Size = new System.Drawing.Size(314, 52);
             this.BackgroundImageListBox.TabIndex = 4;
             // 
             // RevokeOnButton
             // 
             this.RevokeOnButton.AutoSize = true;
             this.RevokeOnButton.Checked = true;
-            this.RevokeOnButton.Location = new System.Drawing.Point(94, 208);
+            this.RevokeOnButton.Location = new System.Drawing.Point(92, 195);
             this.RevokeOnButton.Name = "RevokeOnButton";
             this.RevokeOnButton.Size = new System.Drawing.Size(47, 16);
             this.RevokeOnButton.TabIndex = 5;
             this.RevokeOnButton.TabStop = true;
             this.RevokeOnButton.Text = "打开";
             this.RevokeOnButton.UseVisualStyleBackColor = true;
+            this.RevokeOnButton.CheckedChanged += new System.EventHandler(this.RevokeOnButton_CheckedChanged);
             // 
             // RevokeOffButton
             // 
             this.RevokeOffButton.AutoSize = true;
-            this.RevokeOffButton.Location = new System.Drawing.Point(147, 208);
+            this.RevokeOffButton.Location = new System.Drawing.Point(145, 195);
             this.RevokeOffButton.Name = "RevokeOffButton";
             this.RevokeOffButton.Size = new System.Drawing.Size(47, 16);
             this.RevokeOffButton.TabIndex = 6;
             this.RevokeOffButton.Text = "关闭";
             this.RevokeOffButton.UseVisualStyleBackColor = true;
+            this.RevokeOffButton.CheckedChanged += new System.EventHandler(this.RevokeOffButton_CheckedChanged);
             // 
             // OKButton
             // 
-            this.OKButton.Location = new System.Drawing.Point(100, 241);
+            this.OKButton.Location = new System.Drawing.Point(98, 228);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(94, 28);
             this.OKButton.TabIndex = 7;
@@ -124,7 +127,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(247, 241);
+            this.CancelButton.Location = new System.Drawing.Point(245, 228);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(94, 28);
             this.CancelButton.TabIndex = 8;
