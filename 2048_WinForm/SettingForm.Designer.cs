@@ -77,7 +77,6 @@
             this.BackgroundMusicListBox.Name = "BackgroundMusicListBox";
             this.BackgroundMusicListBox.Size = new System.Drawing.Size(314, 40);
             this.BackgroundMusicListBox.TabIndex = 3;
-            this.BackgroundMusicListBox.SelectedIndexChanged += new System.EventHandler(this.BackgroundMusicListBox_SelectedIndexChanged);
             // 
             // BackgroundImageListBox
             // 
@@ -121,6 +120,7 @@
             this.OKButton.TabIndex = 7;
             this.OKButton.Text = "确定";
             this.OKButton.UseVisualStyleBackColor = true;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
             // 
             // CancelButton
             // 
@@ -130,6 +130,7 @@
             this.CancelButton.TabIndex = 8;
             this.CancelButton.Text = "取消";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SettingForm
             // 
@@ -148,6 +149,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SettingForm";
             this.Text = "SettingForm";
+            this.Load += new System.EventHandler(this.SettingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

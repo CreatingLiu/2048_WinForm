@@ -35,6 +35,7 @@
             this.timeLabel = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.SettingButton = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Timer1
@@ -95,6 +96,19 @@
             this.label1.Text = "2048小游戏alpha0.0.1  by-刘兴国      上下左右方向键和WASD操作游戏，R重新开始\r\n\r\n感谢曹子悦同学提供的背景图\r\n\r\n目前功能还不是" +
     "很完善，但是仍然有可能像我一样上瘾，请大家谨慎食用";
             // 
+            // SettingButton
+            // 
+            this.SettingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SettingButton.AutoSize = true;
+            this.SettingButton.BackColor = System.Drawing.Color.Transparent;
+            this.SettingButton.Font = new System.Drawing.Font("华文行楷", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.SettingButton.Location = new System.Drawing.Point(532, 545);
+            this.SettingButton.Name = "SettingButton";
+            this.SettingButton.Size = new System.Drawing.Size(56, 23);
+            this.SettingButton.TabIndex = 6;
+            this.SettingButton.Text = "设置";
+            this.SettingButton.Click += new System.EventHandler(this.SettingButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -103,6 +117,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(600, 600);
             this.ControlBox = false;
+            this.Controls.Add(this.SettingButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.timeLabel);
@@ -125,6 +140,7 @@
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label SettingButton;
     }
 }
 

@@ -46,6 +46,7 @@ namespace _2048_WinForm
         /// 主窗体
         /// </summary>
         public static MainForm mainForm;
+        public static SettingForm settingForm;
 
         /// <summary>
         /// 背景音乐对象
@@ -67,6 +68,7 @@ namespace _2048_WinForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             mainForm = new MainForm();
+            settingForm = new SettingForm();
 
 
             Trace.WriteLine("屏幕分辨率："+primaryScreenWidth+"*"+primaryScreenHeight);
@@ -95,12 +97,13 @@ namespace _2048_WinForm
 
             
 
-            switch (Properties.Settings.Default.bacgroundImageIndex)
+            switch (Properties.Settings.Default.backgroundImageIndex)
             {
                 case 0:
-                    
+                    mainForm.BackgroundImage = Properties.Resources.backgroundImage1;
                     break;
                 case 1:
+                    mainForm.BackgroundImage = Properties.Resources.backgroundImage2;
                     break;
             }
 

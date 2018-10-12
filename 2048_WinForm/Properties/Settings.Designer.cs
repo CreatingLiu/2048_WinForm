@@ -25,13 +25,13 @@ namespace _2048_WinForm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public byte bacgroundImageIndex {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte backgroundImageIndex {
             get {
-                return ((byte)(this["bacgroundImageIndex"]));
+                return ((byte)(this["backgroundImageIndex"]));
             }
             set {
-                this["bacgroundImageIndex"] = value;
+                this["backgroundImageIndex"] = value;
             }
         }
         
@@ -49,7 +49,7 @@ namespace _2048_WinForm.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public byte backgroundMusicIndex {
             get {
                 return ((byte)(this["backgroundMusicIndex"]));

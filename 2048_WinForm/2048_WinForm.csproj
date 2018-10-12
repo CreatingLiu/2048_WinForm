@@ -135,6 +135,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\backgroundMusic2.wav" />
+    <None Include="Resources\backgroundMusic1.wav" />
     <None Include="Resources\music\Sing, R. Sing! - 幼女幻奏.wav" />
     <None Include="Resources\music\River Flows In You.wav" />
     <None Include="Resources\pic\icon.ico" />

@@ -2,14 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="_2048_WinForm.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="bacgroundImageIndex" Type="System.Byte" Scope="User">
-      <Value Profile="(Default)">1</Value>
+    <Setting Name="backgroundImageIndex" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="isRevoke" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="backgroundMusicIndex" Type="System.Byte" Scope="User">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="musicVolume" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>

@@ -171,5 +171,25 @@ namespace _2048_WinForm
             scoreLabel.Location = new Point(primaryScreenHeight*115/600+(primaryScreenWidth-primaryScreenHeight)/2,primaryScreenHeight*66/600);
             timeLabel.Location = new Point(primaryScreenHeight * 370 / 600 + (primaryScreenWidth - primaryScreenHeight) / 2, primaryScreenHeight * 66 / 600);
         }
+
+        public void SetBackgroundImage(byte index)
+        {
+            switch (index)
+            {
+                case 0:
+                    BackgroundImage = Properties.Resources.backgroundImage1;
+                    break;
+                case 1:
+                    BackgroundImage = Properties.Resources.backgroundImage2;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void SettingButton_Click(object sender, EventArgs e)
+        {
+            settingForm.ShowDialog();
+        }
     }
 }

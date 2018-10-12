@@ -1,5 +1,6 @@
 ﻿using static _2048_WinForm.PublicVar;
 using System.Media;
+using System.Diagnostics;
 
 namespace _2048_WinForm.Properties {
 
@@ -44,12 +45,13 @@ namespace _2048_WinForm.Properties {
 
         private void Setting ()
         {
-            switch (Default.bacgroundImageIndex)
+            Trace.WriteLine("音乐选择"+Default.backgroundImageIndex);
+            switch (Default.backgroundMusicIndex)
             {
-                case 1:
+                case 0:
                     backgroundMusicPlayer = new SoundPlayer(Resources.backgroundMusic1);
                     break;
-                case 2:
+                case 1:
                     backgroundMusicPlayer = new SoundPlayer(Resources.backgroundMusic2);
                     break;
             }
