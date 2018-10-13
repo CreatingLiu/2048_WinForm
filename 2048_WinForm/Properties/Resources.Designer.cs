@@ -99,6 +99,15 @@ namespace _2048_WinForm.Properties {
         }
         
         /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream backgroundMusic3 {
+            get {
+                return ResourceManager.GetStream("backgroundMusic3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         public static System.Drawing.Bitmap num1024 {

@@ -364,12 +364,12 @@ namespace _2048_WinForm
 
     }
 
-    class SaveFile
+    class GameData
     {
         public int[,] Num { get; }
         public int Score { get; }
         public long Time { get; }
-        public SaveFile(int[,] num, int score, long time)
+        public GameData(int[,] num, int score, long time)
         {
             Num = num;
             Score = score;

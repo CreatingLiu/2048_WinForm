@@ -73,7 +73,8 @@
             this.BackgroundMusicListBox.Items.AddRange(new object[] {
             "（无）",
             "River Flows In You                  ——刘倩倩",
-            "Sing, R. Sing! - 幼女幻奏          ——刘倩倩"});
+            "Sing, R. Sing! - 幼女幻奏          ——刘倩倩",
+            "恋愛サーキュレーション"});
             this.BackgroundMusicListBox.Location = new System.Drawing.Point(92, 40);
             this.BackgroundMusicListBox.Name = "BackgroundMusicListBox";
             this.BackgroundMusicListBox.Size = new System.Drawing.Size(314, 52);

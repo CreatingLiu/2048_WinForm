@@ -6574,4 +6574,7 @@
         YfV5q7/kHH/an/6dsfV5q7/kHH/an/6dsfV5q7/kHH/an/6dsfV5qu/5B5/2qP8Ap2wb+av/2Q==
 </value>
   </data>
+  <data name="backgroundMusic3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgroundMusic3.wav;System.IO.MemoryStream, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

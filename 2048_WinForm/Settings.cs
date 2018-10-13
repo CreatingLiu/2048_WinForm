@@ -61,6 +61,9 @@ namespace _2048_WinForm.Properties {
                 case 2:
                     backgroundMusicPlayer = new SoundPlayer(Resources.backgroundMusic2);
                     break;
+                case 3:
+                    backgroundMusicPlayer = new SoundPlayer(Resources.backgroundMusic3);
+                    break;
             }
 
             if (backgroundMusicIndex != 0)

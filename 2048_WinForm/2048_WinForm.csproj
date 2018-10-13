@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\backgroundMusic3.wav" />
     <None Include="Resources\backgroundImage2.jpg" />
     <None Include="Resources\backgroundMusic2.wav" />
     <None Include="Resources\backgroundMusic1.wav" />
