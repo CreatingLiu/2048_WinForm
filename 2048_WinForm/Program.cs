@@ -371,6 +371,7 @@ namespace _2048_WinForm
         public long Time { get; }
         public GameData(int[,] num, int score, long time)
         {
+
             Num = num;
             Score = score;
             Time = time;

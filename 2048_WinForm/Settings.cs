@@ -45,7 +45,7 @@ namespace _2048_WinForm.Properties {
 
         private void Setting ()
         {
-            backgroundMusicPlayer = new SoundPlayer();
+            //backgroundMusicPlayer = new SoundPlayer();
             Trace.WriteLine("音乐选择"+Default.backgroundImageIndex);
             if (backgroundMusicIndex == 0)
                 backgroundMusicPlayer.Stop();
