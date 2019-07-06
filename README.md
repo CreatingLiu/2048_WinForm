@@ -22,3 +22,6 @@ exe文件位于2048_WinForm/release
 
 1. esv
 2. fvwf
+
+* hahaah
+* hehehe
