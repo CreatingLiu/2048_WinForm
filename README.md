@@ -19,3 +19,6 @@ exe文件位于2048_WinForm/release
 ~~删除线~~
 
 ^上标^
+
+1. esv
+2. fvwf
